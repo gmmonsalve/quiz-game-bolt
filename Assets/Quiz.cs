@@ -10,27 +10,25 @@ public class Quiz : MonoBehaviour
    public ArrayList preguntas = new ArrayList();
    
    
-    void Start()
-    {
-        
-         preguntas.Add("Hola");
-         preguntas.Add("soy");
-         preguntas.Add("una prueba");
-         Debug.Log("Sí estoy aquí jaja");
-    }
+   void Start()
+   {
+      preguntas.Add("Hola");
+      preguntas.Add("soy");
+      preguntas.Add("una prueba");
+      Debug.Log("Sí estoy aquí jaja");
+   }
 
     // Update is called once per frame
-    void Update()
-    {
+   void Update()
+   {
         
-    }
+   }
 
-    void setQuestions(){
-    }
+   void setQuestions(){
+   }
 
-    public string getQuestion(){
-        
+   /*public string getQuestion(){
       string question = preguntas[0];
       return question;
-   }
+   }*/
 }
