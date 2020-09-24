@@ -9,4 +9,13 @@ public class Question {
     fact = question;
 	isTrue = value;
   }
+
+	public string getFact(){
+		return fact;
+	}
+
+	public bool getIsTrue(){
+		return isTrue;
+	}
+
 }
