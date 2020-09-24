@@ -10,8 +10,8 @@ namespace UnityAndroidBluetooth {
     {
         private static BluetoothControl _instance;
         private BluetoothServer server;
-        //private List<ControlButton> buttons;
-        public ControlButton[] buttons;
+        [SerializeField]private List<ControlButton> buttons;
+        //[SerializeField]private ControlButton[] buttons;
 
         public static BluetoothControl Instance {
             get { return _instance; }
@@ -91,10 +91,12 @@ namespace UnityAndroidBluetooth {
 
     [System.Serializable]
     public class ControlButton {
-        public string Name { get; set; }
-        public string SymbolicName { get; set; }
-        public bool IsPressed { get; set; }
-        public bool IsClicked { get; set; }
+        public string name; 
+        public string Name { get{ return name;} set { name=value; } }
+        public string symbolicName;
+        public string SymbolicName {get {return symbolicName;} set{symbolicName=value;}}
+        public bool IsPressed {get; set; }
+        public bool IsClicked {get; set; }
 
         public ControlButton(string name, string symbolicName) {
             Name = name;
@@ -121,6 +123,7 @@ namespace UnityAndroidBluetooth {
         public double DeltaY { get; set; }
     }
 
+    
     public class ControlTrigger : ControlButton
     {
         public ControlTrigger(string name) : this(name, name) {  }
