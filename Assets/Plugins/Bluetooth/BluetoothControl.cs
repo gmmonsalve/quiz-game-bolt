@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace UnityAndroidBluetooth {
 
-    [System.Serializable]//agegado
+    //[System.Serializable]//agegado
     public class BluetoothControl : MonoBehaviour
     {
         private static BluetoothControl _instance;
         private BluetoothServer server;
-        private List<ControlButton> buttons;
-        //private ControlButton[] buttons;
+        //private List<ControlButton> buttons;
+        public ControlButton[] buttons;
 
         public static BluetoothControl Instance {
             get { return _instance; }
@@ -89,6 +89,7 @@ namespace UnityAndroidBluetooth {
         }
     }
 
+    [System.Serializable]
     public class ControlButton {
         public string Name { get; set; }
         public string SymbolicName { get; set; }
