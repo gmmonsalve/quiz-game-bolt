@@ -41,14 +41,22 @@ public class Quiz : MonoBehaviour
     }
 
     public string getQuestion(){
-         if(i>preguntas.Count-1){
-               i=0;
+         if(preguntas.Count == 0){
+              string_pregunta = "Juego terminado!";  
+              Variables.ActiveScene.Set("finish", true);
          }else{
-              Question pregunta = preguntas[i];
-              string_pregunta = pregunta.getFact();
-              Variables.ActiveScene.Set("currentQuestionIsTrue", pregunta.getIsTrue());
-              i++;
+          if(i>preguntas.Count-1){
+               i=0;
+               }else{
+                    int randomNum = Random.Range(0, preguntas.Count);
+                    Question pregunta = preguntas[randomNum];
+                    string_pregunta = pregunta.getFact();
+                    Variables.ActiveScene.Set("currentQuestionIsTrue", pregunta.getIsTrue());
+                    preguntas.RemoveAt(randomNum);
          }
+
+         }
+         
           return string_pregunta;
            
    }
