@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using Bolt;
+using Ludiq;
 
 public class Quiz : MonoBehaviour
 {
     // Start is called before the first frame update
    public  List<Question> preguntas = new List<Question>();
-   int i = -2;
-   string question;
+   string string_pregunta;
+   int i = 0;
+   
    
    
     void Start()
     {
          Debug.Log("Sí estoy aquí jaja");   
-        
+         setQuestions(); 
          //Debug.Log(preguntas[0]);
         
          
@@ -38,19 +41,16 @@ public class Quiz : MonoBehaviour
     }
 
     public string getQuestion(){
-        
-         if( i == -2){
-
-            setQuestions(); 
-            i++;         
-            return " Inicio ";
-
-         } else {
-
-            i++;
-            return preguntas[i].getFact();
-      
-                }         
+         if(i>preguntas.Count-1){
+               i=0;
+         }else{
+              Question pregunta = preguntas[i];
+              string_pregunta = pregunta.getFact();
+              Variables.ActiveScene.Set("currentQuestionIsTrue", pregunta.getIsTrue());
+              i++;
+         }
+          return string_pregunta;
+           
    }
 
    
