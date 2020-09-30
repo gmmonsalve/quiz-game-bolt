@@ -5,11 +5,13 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using Bolt;
 using Ludiq;
+using UnityAndroidBluetooth;
 
 public class Quiz : MonoBehaviour
 {
     // Start is called before the first frame update
    public  List<Question> preguntas = new List<Question>();
+   BluetoothControl Btcontrol;
    string string_pregunta;
    int i = 0;
    
@@ -19,6 +21,7 @@ public class Quiz : MonoBehaviour
     {
          Debug.Log("Sí estoy aquí jaja");   
          setQuestions(); 
+         Btcontrol = BluetoothControl.Instance;
          //Debug.Log(preguntas[0]);
         
          
@@ -26,7 +29,7 @@ public class Quiz : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {  
         
     }
 
@@ -59,6 +62,14 @@ public class Quiz : MonoBehaviour
          
           return string_pregunta;
            
+   }
+
+   public void bt(){
+     if (Btcontrol.GetButton("Left").IsClicked){
+          Variables.ActiveScene.Set("BtnL","yes");
+     }else{
+          Variables.ActiveScene.Set("BtnL","no");
+     }
    }
 
    

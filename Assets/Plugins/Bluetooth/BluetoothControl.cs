@@ -10,7 +10,8 @@ namespace UnityAndroidBluetooth {
     {
         private static BluetoothControl _instance;
         private BluetoothServer server;
-        [SerializeField]private List<ControlButton> buttons;
+        //[SerializeField]private List<ControlButton> buttons;
+        public List<ControlButton> buttons;
         //[SerializeField]private ControlButton[] buttons;
 
         public static BluetoothControl Instance {
@@ -32,6 +33,10 @@ namespace UnityAndroidBluetooth {
         
         public void StartServer() {
             server.Start();
+            if (Bluetooth.IsEnabled){//NO OLVIDAR, ESTE ARRANCA EL SERVIDOR
+                BluetoothControl.Server.Start();
+            }
+           
         }
         
         public void StopServer(){
@@ -54,9 +59,10 @@ namespace UnityAndroidBluetooth {
         void Start() 
         {
             Server.MessageReceived += MessageReceivedHandler;
+            StartServer();
         }
 
-        void MessageReceivedHandler(object sender, MessageReceivedEventArgs e) {
+        public void MessageReceivedHandler(object sender, MessageReceivedEventArgs e) {
             string[] message = e.Message.Split(':');
             BluetoothDevice from = e.Sender;
             foreach (ControlButton btn in buttons) {
@@ -134,4 +140,6 @@ namespace UnityAndroidBluetooth {
 
         public double Value { get; set; }
     }
+
+
 }
