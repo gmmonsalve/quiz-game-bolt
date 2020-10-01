@@ -66,9 +66,11 @@ public class Quiz : MonoBehaviour
 
    public void bt(){
      if (Btcontrol.GetButton("Left").IsClicked){
-          Variables.ActiveScene.Set("BtnL","yes");
+          Debug.Log("Sí cambié xd true");
+          Variables.ActiveScene.Set("BtnL",true);  
      }else{
-          Variables.ActiveScene.Set("BtnL","no");
+          Debug.Log("Sí cambié xd false");  
+          Variables.ActiveScene.Set("BtnL",false);
      }
    }
 
