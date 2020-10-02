@@ -39,8 +39,9 @@ public class Quiz : MonoBehaviour
          preguntas.Add(new Question("4+3=10",false));
          preguntas.Add(new Question("6+4=5",false));
          preguntas.Add(new Question("11+12=23",true));
-         preguntas.Add(new Question("100+5=105",true));
-
+        // preguntas.Add(new Question("100+5=105",true));
+         preguntas.Add(new Question("104+5=115",false));
+         preguntas.Add(new Question("231+15=105",false));
     }
 
     public string getQuestion(){
