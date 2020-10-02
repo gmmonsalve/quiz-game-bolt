@@ -65,13 +65,24 @@ public class Quiz : MonoBehaviour
            
    }
 
+     
    public void bt(){
      if (Btcontrol.GetButton("Left").IsClicked){
           Debug.Log("Sí cambié xd true");
-          Variables.ActiveScene.Set("BtnL",true);  
+          Variables.ActiveScene.Set("BtnL","pressed"); 
+          Variables.ActiveScene.Set("ButtonValue",true);
      }else{
           Debug.Log("Sí cambié xd false");  
-          Variables.ActiveScene.Set("BtnL",false);
+          Variables.ActiveScene.Set("BtnL","nopressed");
+     }
+
+     if (Btcontrol.GetButton("Right").IsClicked){
+          Debug.Log("Sí cambié xd true");
+          Variables.ActiveScene.Set("BtnR","pressed");
+          Variables.ActiveScene.Set("ButtonValue",false);  
+     }else{
+          Debug.Log("Sí cambié xd false");  
+          Variables.ActiveScene.Set("BtnR","nopressed");
      }
    }
 
